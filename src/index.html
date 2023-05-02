@@ -1,13 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miami</title>
-    <link rel="stylesheet" href="./styles/main.scss">
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Gallery</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    >
+    <link rel="stylesheet" href="./styles/main.scss" >
     <script src="scripts/main.js" defer></script>
   </head>
   <body>
-    <h1>Miami</h1>
+    <div class="description">
+      <div class="description__logo">Gallery</div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eius
+        voluptates ex reiciendis totam assumenda quae, suscipit rerum
+        consequuntur accusamus labore aspernatur porro consequatur. Neque
+        possimus sed est officiis dolor.
+      </p>
+    </div>
+
+    <div class="swiper slider slider_main">
+      <div class="swiper-wrapper slider__wrapper">
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_1"
+            data-swiper-parallax="20%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_2"
+            data-swiper-parallax="30%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_3"
+            data-swiper-parallax="20%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_4"
+            data-swiper-parallax="30%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_5"
+            data-swiper-parallax="20%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_6"
+            data-swiper-parallax="30%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_7"
+            data-swiper-parallax="20%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_8"
+            data-swiper-parallax="30%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_9"
+            data-swiper-parallax="20%"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper slider slider_bg">
+      <div class="swiper-wrapper slider__wrapper">
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_1"
+            data-swiper-parallax="20%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_2"
+            data-swiper-parallax="30%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_3"
+            data-swiper-parallax="20%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_4"
+            data-swiper-parallax="30%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_5"
+            data-swiper-parallax="20%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_6"
+            data-swiper-parallax="30%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_7"
+            data-swiper-parallax="30%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_8"
+            data-swiper-parallax="30%"
+          ></div>
+        </div>
+
+        <div class="swiper-slide slider__item">
+          <div
+            class="slider__img image_9"
+            data-swiper-parallax="20%"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+      var sliderMain = new Swiper(".slider_main", {
+        freeMode: true,
+        centeredSlides: true,
+        mousewheel: true,
+        parallax: true,
+        breakpoints: {
+          0: {
+            slidesPerView: 2.5,
+            spaceBetween: 20,
+          },
+          680: {
+            slidesPerView: 3.5,
+            spaceBetween: 60,
+          },
+        },
+      });
+
+      var sliderBG = new Swiper(".slider_bg", {
+        centeredSlides: true,
+        mousewheel: true,
+        spaceBetween: 60,
+        slidesPerView: 3.5,
+      });
+      sliderMain.controller.control = sliderBG;
+
+      document.querySelectorAll(".slider__item").forEach((item) => {
+        item.addEventListener("click", (event) => {
+          item.classList.toggle("opened");
+        });
+      });
+
+      let desc = document.querySelector(".description");
+      sliderMain.on("slideChange", (e) => {
+        sliderMain.activeIndex > 0
+          ? desc.classList.add("hidden")
+          : desc.classList.remove("hidden");
+      });
+    </script>
   </body>
 </html>
